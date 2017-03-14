@@ -41,6 +41,16 @@
           }
 
         });
+      } else if (resp.status == 403) {
+        // Forbidden, we need to display te captcha
+        var term = window.pwd.terms[0];
+        var els = document.querySelectorAll(term.selector);
+        for (var n=0; n < els.length; ++n) {
+          var captcha = document.createElement('div');
+          captcha.className = 'captcha';
+          els[n].appendChild(captcha);
+          window.grecaptcha.render(captcha, {'sitekey': '6Ld8pREUAAAAAOkrGItiEeczO9Tfi99sIHoMvFA_', 'callback': verifyCallback.bind(window.pwd)});
+        }
       };
     });
   };
@@ -48,15 +58,8 @@
   // register Recaptcha global onload callback
   window.onloadCallback = function() {
     //Register captcha only on the first term to avoid showing multiple times
-    var term = window.pwd.terms[0];
-    var els = document.querySelectorAll(term.selector);
-    for (var n=0; n < els.length; ++n) {
-      var captcha = document.createElement('div');
-      captcha.className = 'captcha';
-      els[n].appendChild(captcha);
-      window.grecaptcha.render(captcha, {'sitekey': '6Ld8pREUAAAAAOkrGItiEeczO9Tfi99sIHoMvFA_', 'callback': verifyCallback.bind(window.pwd)});
-    }
-  };
+    verifyCallback.call(window.pwd);
+  }
 
   function registerInputHandlers(termName, instance) {
     var self = this;
@@ -181,6 +184,7 @@
         request.setRequestHeader(key, opts.headers[key]);
       }
     }
+    request.withCredentials = true;
     request.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
     request.onload = function() {
       callback(request);
