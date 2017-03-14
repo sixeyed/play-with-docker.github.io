@@ -146,7 +146,7 @@ footer {
     flex-direction: row;
     overflow: hidden;
     height: 100%;
-    flex: auto;
+    flex: 1 1 auto;
 
     /* avoid browser level touch actions */
     xtouch-action: none;
@@ -161,9 +161,7 @@ footer {
     flex: 0 0 auto;
     /* only manually resize */
     width: 50%;
-    min-height: 400px;
     min-width: 150px;
-    height: 100%;
 }
 
 .content {
@@ -185,12 +183,26 @@ footer {
 }
 
 .panel-right {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
     flex: 1 1 auto;
     /* resizable */
     width: 100%;
-    min-height: 300px;
     background: #565656;
+
+    > div {
+        flex: 1 1 auto;
+        margin-bottom: 15px;
+        overflow-y: auto;
+
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+
+        &.initialized {
+            background-color: black;
+        }
+    }
 }
 
 
