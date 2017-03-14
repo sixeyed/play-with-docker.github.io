@@ -77,11 +77,11 @@ As figlet is present in our **ourfiglet** image, the command ran returns the fol
 
 This example shows that we can create a container, add all the libraries and binaries in it and then commit this one in order to create an image. We can then use that image as we would do for any other images. This approach is not the recommended one as it is not very portable.
 
-In the following we will see how image are usually created, using a Dockerfile, which is a text file that contains all the instructions to build an image.
+In the following we will see how images are usually created, using a Dockerfile, which is a text file that contains all the instructions to build an image.
 
 ## Image creation using a Dockerfile
 
-We will use a simple example in this section and build an hello world application in Node.js. We will start by creating a file in which we retrieve the hostname and display it.
+We will use a simple example in this section and build a hello world application in Node.js. We will start by creating a file in which we retrieve the hostname and display it.
 
 Copy the following content into index.js file.
 
@@ -103,7 +103,7 @@ WORKDIR /app
 CMD ["node","index.js"]
 ```
 
-Let's build our first image out of this Dockerfile, we will name it hello:v1.0
+Let's build our first image out of this Dockerfile, we will name it hello:v0.1
 
 ```.term1
 docker image build -t hello:v0.1 .
@@ -134,7 +134,7 @@ WORKDIR /app
 CMD ["node","index.js"]
 ```
 
-Basically, it is not that different from the previous one, it just uses a base image that embeds alpine and a Node.js runtime so we do not have to instal it ourself. In this example, installing Node.js is not a big deal, but it is really helpful to use image where a runtime (or else) is already packages when using more complex environments.
+Basically, it is not that different from the previous one, it just uses a base image that embeds alpine and a Node.js runtime so we do not have to install it ourself. In this example, installing Node.js is not a big deal, but it is really helpful to use image where a runtime (or else) is already packages when using more complex environments.
 
 We will now create a new image using this Dockerfile.
 
@@ -142,7 +142,7 @@ We will now create a new image using this Dockerfile.
 docker image build -f Dockerfile-v2 -t hello:v0.2 .
 ```
 
-Note: as we do not use the default name for our Dockerfile, we use the -f option to points towards the one we need to use.
+Note: as we do not use the default name for our Dockerfile, we use the -f option to point towards the one we need to use.
 
 We now run a container from this image.
 
@@ -207,7 +207,7 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 64 bytes from 8.8.8.8: seq=2 ttl=38 time=8.585 ms
 ```
 
-## Image inspection
+## Image Inspection
 
 As we have already seen with containers, and as we will see with other Docker's components (volume, network, ...), the **inspect** command is available for the image API and it returns all the information of the image provided.
 
