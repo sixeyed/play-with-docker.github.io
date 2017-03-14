@@ -14,13 +14,13 @@ In this first lab, you’ll put into practice the base commands to manage Docker
 That means you will start to play and to have fun with containers :)
 
 Important note: in the labs, when you see command inside some grey rectangle, you just need to click on it so it is executed on the terminal (but if you want you can write it manually).
-Let's see the first example below to get the version of the Docker Engine running on the plateform.
+Let's see the first example below to get the version of the Docker Engine running on the platform.
 
 ```.term1
 docker version
 ```
 
-You should get an output like the following that shows Docker Engine (Server) and Client are running version 1.13.
+You should get an output like the following that shows Docker Engine (Server) and Client are running version 17.03.0.
 
 ```
 Client:
@@ -95,7 +95,7 @@ exit
 
 Very often, containers are ran in background. They can expose services like HTTP API, databases, ...
 
-Ley's now use the **mongo** official image (for those who might not be very familiar with it, MongoDB is a very popular NoSQL database) and run a container in background (using the **-d** option).
+Let's now use the **mongo** official image (for those who might not be very familiar with it, MongoDB is a very popular NoSQL database) and run a container in background (using the **-d** option).
 
 ```.term1
 docker container run -d --name mongo mongo:3.2
@@ -177,7 +177,7 @@ docker container inspect --format "{{ "{{ .NetworkSettings.IPAddress " }}}}" www
 
 Select some other elements of the whole json structure returned by the **inspect** command and try to get them using the Go template format.
 
-## Explore the other command of the container's API
+## Explore the other commands of the container's API
 
 All the commands linked to the container can be listed with
 
@@ -190,7 +190,7 @@ We have already seen some of them and will see some other ones in the following 
 ## Understand the container layer
 
 The container layer is the layer created when a container is ran. This is the layer in which changes done in the container are stored.
-This layer is deleted when the container is removed and thus cannot be used for presistent storage.
+This layer is deleted when the container is removed and thus cannot be used for persistent storage.
 
 We will start by running a container in interactive mode based on the **ubuntu** image.
 
@@ -252,7 +252,7 @@ Is **figlet** package still there ? Let's figure this out.
 figlet
 ```
 
-You should get an error message like the fllowing.
+You should get an error message like the following.
 
 ```
 bash: figlet: command not found
@@ -309,7 +309,7 @@ exit
 
 ## Cleanup
 
-We will now remove all the container from the machine. There should not be any container in the running state though.
+We will now remove all the containers from the machine. There should not be any container in the running state though.
 Let's check that.
 
 ```.term1
