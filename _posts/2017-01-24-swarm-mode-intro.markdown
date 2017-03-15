@@ -21,7 +21,7 @@ docker swarm init --advertise-addr $(hostname -i)
 Copy the join command (*watch out for newlines*) output and paste it in the other terminal.
 
 
-## show members of swarm
+## Show members of swarm
 
 ```.term1
 docker node ls
@@ -36,7 +36,7 @@ kytp4gq5mrvmdbb0qpifdxeiv *  node1     Ready   Active        Leader
 lz1j4d6290j8lityk4w0cxls5    node2     Ready   Active
 ```
 
-If you try to execute an administrative command in a non-leader node, you'll get an error. Try it here:
+If you try to execute an administrative command in a non-leader node `worker`, you'll get an error. Try it here:
 
 ```.term2
 docker node ls
@@ -52,7 +52,7 @@ docker service create -p 80:80 --name web nginx:latest
 docker service ls
 ```
 
-You can check that nginx is running by executing the following comand:
+You can check that nginx is running by executing the following command:
 
 ```.term1
 curl http://localhost:80

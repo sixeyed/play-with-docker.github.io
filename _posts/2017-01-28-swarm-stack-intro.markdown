@@ -32,9 +32,9 @@ docker swarm init --advertise-addr $(hostname -i)
 
 From the output above, copy the join command (*watch out for newlines*) and paste it in the other terminal.
 
-## show members of swarm
+## Show members of swarm
 
-From the first terminal, check the number of nodes in the swarm (running this command from the second terminal will fail as swarm related commands need to be issued against a swarm manager).
+From the first terminal, check the number of nodes in the swarm (running this command from the second terminal `worker` will fail as swarm related commands need to be issued against a swarm manager).
 
 ```.term1
 docker node ls
@@ -44,7 +44,7 @@ The above command should output 2 nodes, the first one being the manager, and th
 
 ## Clone the voting-app
 
-Let's retreive the voting app code from Github and go into the application folder.
+Let's retrieve the voting app code from Github and go into the application folder.
 
 ```.term1
 git clone https://github.com/docker/example-voting-app
